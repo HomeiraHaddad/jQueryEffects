@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        @font-face
+        {
+            font-family: "f1";
+            src: url(Caveat-VariableFont_wght.ttf);
+        }
+        html
+        {
+            font-family: "f1";
+            font-size: 35pt;
+        }
+        p
+        {
+            background-color: #9207ad;
+            color: white;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+            border-radius: 30px;
+            opacity: 0.8;
+            font-weight: bolde;
+            position: relative;
+        }
+        body
+        {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: url('../GJCEBCAJFpCsY8P.mp4') ;
+        }
+        .btns
+        {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 25px;
+            left: 100px;
+            
+        }
+        button
+        {
+            margin: 5px;
+            width: 90px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(45deg ,#9207ad,#4107ad,#078cad,#ecf00a,#e73b06);
+            color: white;
+            opacity: 0.8;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:active
+        {
+            color: rgb(247, 223, 4);
+        }
+        .paragraphs
+        {
+            display: flex;
+            position: relative;
+            left: 400px;
+            top: 200px;
+        }
+        video
+        {
+            min-width: 100%;
+            min-height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0.3;
+            z-index: -1000;
+            position: fixed;
+        }
+        *
+        {
+            margin: 0;
+            padding: 0;
+        }
+        #s-desc
+        {
+            position: absolute;
+            top: 500px;
+            left: 350px;
+            
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery2</title>
+    <script src="jquery-3.6.4.min-compressed.js"></script>
+    <script>
+        $.noConflict
+        jQuery(document).ready(function($){
+            $('#btn-hide').click(function(){
+                $('.p1').hide("slow");
+                $('.p2').hide("slow");
+                $('.p3').hide(1000);
+                $('.p4').hide(1000 , function(){
+                    $('p').css({'background-color' : "#4107ad" , 'color' : 'white'});
+                });
+                
+            })
+            $('#btn-show').click(function(){
+                $('p').show('slow')
+            })
+            $('#btn-toggle').click(function(){
+                $('p').toggle('slow',function(){
+                    $('p').css({'background-color' : "#078cad" , 'color' : "black"})
+                })
+            })
+            $('#btn-fadeout').click(function(){
+                $('p').fadeOut(1000,function(){
+                    $('p').css('background-color' , "#07ad6d")
+                })
+            })
+            $('#btn-fadein').click(function(){
+                $('p').fadeIn(1000)
+            })
+            $('#btn-fadetoggle').click(function(){
+                $('p').fadeToggle('slow' , function(){
+                    $('p').css({'background-color' : "#ecf00a" , 'color' : "black"});
+                })
+            })
+            $('#btn-fadeto').click(function(){
+                $('p').fadeTo('slow' ,0.5 , function(){
+                    
+                })
+            })
+            $('#btn-slideup').click(function(){
+                $('p').slideUp('slow', function(){
+                    $('p').css({'background-color' : "#e73b06" , 'color' : "black" , 'opacity' : '0.8'});
+                })
+            })
+            $('#btn-slidedown').click(function(){
+                $('p').slideDown('slow')
+            })
+            $('#btn-slidetoggle').click(function(){
+                $('p').slideToggle('slow')
+            })
+            $('#btn-animate').click(function(){
+                $('.p1').animate({'top' : '-200px'},1000)
+                $('.p2').animate({'right' : '200px'},1000)
+                $('.p3').animate({'right' : '200px'},1000)
+                $('.p4').animate({'right' : '200px'},1000)
+                $('.p1').animate({'left' : '700px'},1000)
+                $('.p2').animate({'top' : '-200px'},1000)
+                $('.p3').animate({'right' : '400px'},1000)
+                $('.p4').animate({'right' : '400px'},1000)
+                $('.p1').animate({'top' : '0'},1000)
+                $('.p2').animate({'left' : '520px'},1000)
+                $('.p3').animate({'top' : '-200px'},1000)
+                $('.p4').animate({'right' : '600px'},1000)
+                $('.p1').animate({'left' : '0'},1000)
+                $('.p2').animate({'top' : '0'},1000)
+                $('.p3').animate({'left' : '350px'},1000)
+                $('.p4').animate({'top' : '-200px'},1000)
+                $('.p2').animate({'left' : '0'},1000)
+                $('.p3').animate({'top' : '0'},1000)
+                $('.p4').animate({'left' : '200px'},1000)
+                $('.p3').animate({'left' : '0'},1000)
+                $('.p4').animate({'top' : '0'},1000)
+                $('.p4').animate({'left' : '0'},1000)
+                
+            })
+            $('#btn-stop').click(function(){
+                $('p').stop()
+            })
+        })
+        function showDescribtion(id)
+        {
+            switch (id)
+            {
+                case "btn-hide" : document.getElementById('s-desc').innerHTML="The hide() method hides the selected elements";
+                break;
+                case "btn-show" : document.getElementById('s-desc').innerHTML="The show() method shows the hidden, selected elements";
+                break;
+                case "btn-toggle" : document.getElementById('s-desc').innerHTML= "The toggle() method toggles between hide() and show() for the selected elements" ;
+                break;
+                case "btn-fadeout" : document.getElementById('s-desc').innerHTML= "The fadeOut() method gradually changes the opacity, for selected elements, from visible to hidden (fading effect)" ;
+                break;
+                case "btn-fadein" : document.getElementById('s-desc').innerHTML= "The fadeIn() method gradually changes the opacity, for selected elements, from hidden to visible (fading effect)" ;
+                break;
+                case "btn-fadetoggle" : document.getElementById('s-desc').innerHTML= "The fadeToggle() method toggles between the fadeIn() and fadeOut() methods" ;
+                break;
+                case "btn-fadeto" : document.getElementById('s-desc').innerHTML= "The fadeTo() method gradually changes the opacity, for selected elements, to a specified opacity (fading effect)" ;
+                break;
+                case "btn-slideup" : document.getElementById('s-desc').innerHTML= "The slideUp() method slides-up (hides) the selected elements" ;
+                break;
+                case "btn-slidedown" : document.getElementById('s-desc').innerHTML= "The slideDown() method slides-down (shows) the selected elements" ;
+                break;
+                case "btn-slidetoggle" : document.getElementById('s-desc').innerHTML= "The slideToggle() method toggles between slideUp() and slideDown() for the selected elements";
+                break;
+                case "btn-animate" : document.getElementById('s-desc').innerHTML= "The jQuery animate() method is used to create custom animations" ;
+                break;
+                case "btn-stop" : document.getElementById('s-desc').innerHTML= "The jQuery stop() method is used to stop animations or effects before it is finished" ;
+                break;
+                
+            
+            }
+                
+        }
+    </script>
+</head>
+<body>
+    <video autoplay muted loop>
+        <source src="../GJCEBCAJFpCsY8P.mp4">
+    </video>
+    <div class="btns">
+        <button id="btn-hide" onclick="showDescribtion(id)">Hide</button>
+        <button id="btn-show" onclick="showDescribtion(id)">Show</button>
+        <button id="btn-toggle" onclick="showDescribtion(id)">Toggle</button>
+        <button id="btn-fadeout" onclick="showDescribtion(id)">Fade Out</button>
+        <button id="btn-fadein" onclick="showDescribtion(id)">Fade In</button>
+        <button id="btn-fadetoggle" onclick="showDescribtion(id)">Fade Toggle</button>
+        <button id="btn-fadeto" onclick="showDescribtion(id)">Fade To</button>
+        <button id="btn-slideup" onclick="showDescribtion(id)">Slide Up</button>
+        <button id="btn-slidedown" onclick="showDescribtion(id)">Slide Down</button>
+        <button id="btn-slidetoggle" onclick="showDescribtion(id)">Slide Toggle</button>
+        <button id="btn-animate" onclick="showDescribtion(id)">Animation</button>
+        <button id="btn-stop" onclick="showDescribtion(id)">Stop</button>
+    </div>
+    <div class="paragraphs">
+        <p class="p1">Hello!</p>
+        <p class="p2">Welcome</p>
+        <p class="p3">to my</p>
+        <p class="p4">web page</p>
+    </div>
+    <div class="describtion">
+        <span id="s-desc"></span>
+    </div>
+    
+</body>
+</html>
